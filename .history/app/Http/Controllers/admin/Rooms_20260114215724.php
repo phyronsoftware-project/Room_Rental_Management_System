@@ -9,6 +9,6 @@ class Rooms extends Controller
 {
     public function index()
     {
-        return view('rooms.all');
+        return view('rooms.all_rooms');
     }
 }
