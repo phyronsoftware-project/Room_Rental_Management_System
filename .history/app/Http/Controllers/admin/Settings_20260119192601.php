@@ -5,14 +5,14 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class Tanants extends Controller
+class Settings extends Controller
 {
     public function index()
     {
-        return view('tenants.tenants');
+        return view(view: 'settings.settings');
     }
-    public function createblade()
+    public function se()
     {
-        return view('tenants.tenants_create');
+        return view(view: 'settings.settings');
     }
 }

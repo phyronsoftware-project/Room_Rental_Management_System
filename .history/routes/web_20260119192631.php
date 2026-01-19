@@ -10,9 +10,7 @@ use App\Http\Controllers\admin\Tanants;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [Dashboard::class, 'index'])->name('dashboard.index');
-
 Route::get('/tanants', [Tanants::class, 'index'])->name('tanants.index');
-Route::get('/tanants/create', [Tanants::class, 'createblade'])->name('tanants.createblade');
 
 
 
@@ -33,4 +31,4 @@ Route::get('/maintenance/create', [Maintenance::class, 'createblade'])->name('ma
 Route::get('/reports', [Report::class, 'index'])->name('reports.index');
 
 Route::get('/settings', [Settings::class, 'index'])->name('settings.index');
-Route::get('/setting/profile', [Settings::class, 'setting_profile'])->name('settings.setting_profile');
+Route::get()

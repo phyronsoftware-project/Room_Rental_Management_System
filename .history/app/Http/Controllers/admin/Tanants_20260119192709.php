@@ -11,8 +11,5 @@ class Tanants extends Controller
     {
         return view('tenants.tenants');
     }
-    public function createblade()
-    {
-        return view('tenants.tenants_create');
-    }
+    
 }

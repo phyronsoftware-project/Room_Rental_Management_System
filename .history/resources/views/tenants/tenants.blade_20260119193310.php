@@ -17,7 +17,7 @@
             <div class="flex justify-between items-center">
                 <h1 class="text-3xl font-bold text-primary-dark">TENANTS</h1>
                 <!-- ENHANCEMENT: Added icon and hover effect -->
-                <a href="{{ route('tanants.createblade') }}"
+                <a href="{{ route('tenants.create') }}"
                     class="bg-blue-900 text-white px-5 py-2.5 rounded-lg font-semibold text-sm shadow-md hover:bg-blue-800 transition-all flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5">
                         <path

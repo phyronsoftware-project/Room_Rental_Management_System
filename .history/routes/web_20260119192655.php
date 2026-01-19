@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [Dashboard::class, 'index'])->name('dashboard.index');
 
 Route::get('/tanants', [Tanants::class, 'index'])->name('tanants.index');
-Route::get('/tanants/create', [Tanants::class, 'createblade'])->name('tanants.createblade');
+
 
 
 

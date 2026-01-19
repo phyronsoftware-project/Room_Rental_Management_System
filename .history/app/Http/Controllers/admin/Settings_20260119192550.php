@@ -11,8 +11,5 @@ class Settings extends Controller
     {
         return view(view: 'settings.settings');
     }
-    public function setting_profile()
-    {
-        return view(view: 'settings.profile');
-    }
+    puni
 }
