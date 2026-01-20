@@ -15,7 +15,7 @@ use App\Http\Controllers\admin\Tanants;
 Route::get('/', fn() => redirect()->route('login'));
 
 // ✅ login (guest only)
-Route::get('/', [AuthController::class, 'login'])
+Route::get('/login', [AuthController::class, 'login'])
     ->name('login')
     ->middleware('guest');
 

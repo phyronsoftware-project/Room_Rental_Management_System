@@ -36,30 +36,16 @@
             <div id="user-menu"
                 class="absolute right-0 mt-2 w-48 bg-light rounded-md shadow-lg py-1 border border-gray-200 z-30 hidden transition-all duration-300 ease-in-out"
                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button">
-
                 <a href="{{ route('settings.setting_profile') }}"
-                    class="block px-4 py-2 text-sm text-text-dark hover:bg-base" role="menuitem">
-                    Your Profile
-                </a>
-
+                    class="block px-4 py-2 text-sm text-text-dark hover:bg-base" role="menuitem">Your Profile</a>
                 <a href="{{ url('/settings') }}" class="block px-4 py-2 text-sm text-text-dark hover:bg-base"
-                    role="menuitem">
-                    Settings
-                </a>
-
+                    role="menuitem">Settings</a>
                 <hr class="border-gray-200 my-1" />
-
-                {{-- ✅ POST logout (fix MethodNotAllowed) --}}
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit"
-                        class="w-full text-left block px-4 py-2 text-sm text-danger-dark hover:bg-danger-light"
-                        role="menuitem">
-                        Sign out
-                    </button>
+                    <button type="submit">Logout</button>
                 </form>
             </div>
-
         </div>
     </div>
 </nav>

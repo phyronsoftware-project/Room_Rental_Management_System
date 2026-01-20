@@ -1,7 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\admin\Auth;
 use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\Dashboard;
 use App\Http\Controllers\admin\Maintenance;
@@ -10,24 +9,18 @@ use App\Http\Controllers\admin\Report;
 use App\Http\Controllers\admin\Rooms;
 use App\Http\Controllers\admin\Settings;
 use App\Http\Controllers\admin\Tanants;
+use Illuminate\Support\Facades\Route;
 
-// ✅ redirect "/" to login
-Route::get('/', fn() => redirect()->route('login'));
 
-// ✅ login (guest only)
-Route::get('/', [AuthController::class, 'login'])
-    ->name('login')
-    ->middleware('guest');
 
-// ✅ post login
-Route::post('/authenticate', [AuthController::class, 'authenticate'])
-    ->name('authenticate')
-    ->middleware('guest');
+
+Route::get('/login', [AuthController::class, 'login'])->name('login.index');
+Route::get('/login', [AuthController::class, 'login'])->name('login.index');
+Route::post('/authenticate', [AuthController::class, 'authenticate'])->name('authenticate');
 
 
 // ✅ Protected pages (auth) - GROUP
 Route::middleware('auth')->group(function () {
-
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard.index');
@@ -50,4 +43,3 @@ Route::middleware('auth')->group(function () {
     Route::get('/settings', [Settings::class, 'index'])->name('settings.index');
     Route::get('/setting/profile', [Settings::class, 'setting_profile'])->name('settings.setting_profile');
 });
-
