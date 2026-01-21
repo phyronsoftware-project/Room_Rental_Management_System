@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/profile/avatar', [ProfileController::class, 'updateAvatar'])->name('profile.avatar');
     Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update');
-    Route::post('/profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password');
+    Route::post('/profile/password', [::class, 'updatePassword'])->name('profile.password');
 
 
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard.index');

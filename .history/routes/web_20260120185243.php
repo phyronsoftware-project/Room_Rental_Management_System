@@ -6,7 +6,7 @@ use App\Http\Controllers\admin\AuthController;
 use App\Http\Controllers\admin\Dashboard;
 use App\Http\Controllers\admin\Maintenance;
 use App\Http\Controllers\admin\Payments;
-use App\Http\Controllers\admin\ProfileController;
+use App\Http\Controllers\admin\ProfileController ;
 use App\Http\Controllers\admin\Report;
 use App\Http\Controllers\admin\Rooms;
 use App\Http\Controllers\admin\Settings;
