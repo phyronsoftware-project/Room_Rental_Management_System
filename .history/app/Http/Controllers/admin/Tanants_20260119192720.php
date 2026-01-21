@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Http\Controllers\admin;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+
+class Tanants extends Controller
+{
+    public function index()
+    {
+        return view('tenants.tenants');
+    }
+    public function createblade()
+    {
+        return view('tenants.tenants_create');
+    }
+}

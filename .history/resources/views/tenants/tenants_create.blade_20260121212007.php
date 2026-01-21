@@ -81,18 +81,17 @@
                             <label class="block text-sm font-medium text-text-mid mb-2">
                                 Assign Room <span class="text-danger-dark">*</span>
                             </label>
-                            <select id="room_id" name="room_id"
+                            <select name="room_id"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
                                 required>
                                 <option value="">Select an available room</option>
-
                                 @foreach ($rooms as $r)
-                                    <option value="{{ $r->room_id }}" @selected(old('room_id') == $r->room_id)>
-                                        Room {{ $r->room_number }} (Floor {{ $r->floor ?? '-' }})
+                                    {{-- TODO: កែ field room_no / floor តាម DB --}}
+                                    <option value="{{ $r->id }}" @selected(old('room_id') == $r->id)>
+                                        {{ $r->room_no ?? 'Room #' . $r->id }} (Floor {{ $r->floor ?? '-' }})
                                     </option>
                                 @endforeach
                             </select>
-
                         </div>
 
                         <div>

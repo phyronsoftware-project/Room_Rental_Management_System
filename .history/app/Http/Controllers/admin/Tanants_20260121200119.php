@@ -47,11 +47,11 @@ class Tanants extends Controller
         return view('tenants.tenants', compact('tenants'));
     }
 
-
     public function createblade()
     {
-        $rooms = Room::where('status', 'Available')
-            ->orderBy('room_number')
+        // ✅ only show available rooms (កែ query តាម rooms schema របស់អ្នក)
+        $rooms = Room::query()
+            ->orderBy('room_no')
             ->get();
 
         return view('tenants.tenants_create', compact('rooms'));

@@ -25,29 +25,15 @@
             @php
                 $u = auth()->user();
                 $name = $u->full_name ?? ($u->name ?? 'Admin');
-
-                $avatarPath = trim((string) ($u->profile_image_url ?? ''));
-
-                if ($avatarPath !== '') {
-                    // if already full URL (http/https)
-                    if (str_starts_with($avatarPath, 'http')) {
-                        $avatar = $avatarPath;
-                    } else {
-                        // stored in "public" disk (storage/app/public/...)
-                        $avatar = asset('storage/' . ltrim($avatarPath, '/'));
-                    }
-                } else {
-                    // fallback placeholder
-                    $avatar =
-                        'https://placehold.co/40x40/60A5FA/FFF?text=' . urlencode(strtoupper(substr($name, 0, 1)));
-                }
+                $avatar = $u->profile_image_url
+                    ? $u->profile_image_url
+                    : 'https://placehold.co/40x40/60A5FA/FFF?text=' . urlencode(strtoupper(substr($name, 0, 1)));
             @endphp
 
             <button id="user-menu-button"
                 class="flex items-center gap-2 bg-blue-900 px-3 py-2 rounded-full text-sm font-medium hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-primary-dark focus:ring-white">
 
-                <img class="w-8 h-8 rounded-full object-cover" src="{{ $avatar }}" alt="User avatar"
-                    onerror="this.src='https://placehold.co/40x40/60A5FA/FFF?text={{ urlencode(strtoupper(substr($name, 0, 1))) }}'">
+                <img class="w-8 h-8 rounded-full object-cover" src="{{ $avatar }}" alt="User avatar" />
 
                 <span>{{ $name }}</span>
 

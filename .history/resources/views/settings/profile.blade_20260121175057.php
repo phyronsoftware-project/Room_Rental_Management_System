@@ -62,7 +62,7 @@
                         </div>
 
                         <button type="submit"
-                                class="mt-4 w-full rounded-lg bg-blue-700 text-white py-2.5  font-semibold hover:bg-blue-800 transition">
+                                class="mt-4 w-full rounded-lg bg-blue-700 text-white py-2.5 text-base font-semibold hover:bg-blue-800 transition">
                             Save Photo
                         </button>
 
@@ -95,7 +95,7 @@
                                     Full Name <span class="text-red-500">*</span>
                                 </label>
                                 <input name="full_name" value="{{ old('full_name', $u->full_name ?? '') }}"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
+                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5 
                                               focus:outline-none focus:ring-2 focus:ring-blue-500/40">
                                 @error('full_name') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
                             </div>
@@ -105,7 +105,7 @@
                                     Email <span class="text-red-500">*</span>
                                 </label>
                                 <input name="email" type="email" value="{{ old('email', $u->email ?? '') }}"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
+                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5 
                                               focus:outline-none focus:ring-2 focus:ring-blue-500/40">
                                 @error('email') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
                             </div>
@@ -113,7 +113,7 @@
 
                         <div class="flex justify-end">
                             <button type="submit"
-                                    class="rounded-lg bg-blue-700 text-white px-6 py-2.5  font-semibold hover:bg-blue-800 transition">
+                                    class="rounded-lg bg-blue-700 text-white px-6 py-2.5 text-base font-semibold hover:bg-blue-800 transition">
                                 Save Changes
                             </button>
                         </div>
@@ -136,7 +136,7 @@
                         <div>
                             <label class="block text-sm font-semibold text-slate-700 mb-2">Current Password</label>
                             <input name="current_password" type="password"
-                                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5
+                                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-base
                                           focus:outline-none focus:ring-2 focus:ring-blue-500/40">
                             @error('current_password') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
                         </div>
@@ -145,7 +145,7 @@
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">New Password</label>
                                 <input name="password" type="password"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
+                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-base
                                               focus:outline-none focus:ring-2 focus:ring-blue-500/40">
                                 @error('password') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
                             </div>
@@ -153,14 +153,14 @@
                             <div>
                                 <label class="block text-sm font-semibold text-slate-700 mb-2">Confirm New Password</label>
                                 <input name="password_confirmation" type="password"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
+                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-base
                                               focus:outline-none focus:ring-2 focus:ring-blue-500/40">
                             </div>
                         </div>
 
                         <div class="flex justify-end">
                             <button type="submit"
-                                    class="rounded-lg bg-blue-700 text-white px-6 py-2.5  font-semibold hover:bg-blue-800 transition">
+                                    class="rounded-lg bg-blue-700 text-white px-6 py-2.5 text-base font-semibold hover:bg-blue-800 transition">
                                 Update Password
                             </button>
                         </div>

@@ -358,7 +358,7 @@
                                     Alisha
                                 </td>
                                 <td class="px-6 py-4">012 345 678</td>
-                                <td class="px-6 py-4">112KWh</td>
+                                <td class="px-6 py-4">112fKWh</td>
                                 <td class="px-6 py-4">50KL</td>
                                 <td class="px-6 py-4 font-medium text-text-dark">
                                     $150

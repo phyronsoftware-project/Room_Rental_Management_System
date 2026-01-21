@@ -86,42 +86,78 @@
                         <h2 class="text-lg font-semibold text-slate-800">Edit Details</h2>
                     </div>
 
-                    <form method="POST" action="{{ route('profile.update') }}" class="p-6 space-y-5">
-                        @csrf
+                   <form method="POST" action="{{ route('profile.update') }}" class="p-6 space-y-5">
+    @csrf
+    {{-- បើ route ជា PUT/PATCH ត្រូវដាក់ @method('PUT') --}}
+    {{-- @method('PUT') --}}
 
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                            <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">
-                                    Full Name <span class="text-red-500">*</span>
-                                </label>
-                                <input name="full_name" value="{{ old('full_name', $u->full_name ?? '') }}"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
-                                              focus:outline-none focus:ring-2 focus:ring-blue-500/40">
-                                @error('full_name') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
-                            </div>
+    {{-- show all errors --}}
+    @if ($errors->any())
+        <div class="rounded-lg bg-red-50 border border-red-200 p-3 text-red-700 text-sm">
+            <ul class="list-disc pl-5 space-y-1">
+                @foreach ($errors->all() as $e)
+                    <li>{{ $e }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
 
-                            <div>
-                                <label class="block text-sm font-semibold text-slate-700 mb-2">
-                                    Email <span class="text-red-500">*</span>
-                                </label>
-                                <input name="email" type="email" value="{{ old('email', $u->email ?? '') }}"
-                                       class="w-full rounded-lg border border-slate-200 px-4 py-2.5
-                                              focus:outline-none focus:ring-2 focus:ring-blue-500/40">
-                                @error('email') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
-                            </div>
-                        </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Full Name *</label>
+            <input name="full_name" value="{{ old('full_name', $u->full_name ?? '') }}"
+                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+            @error('full_name') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+        </div>
 
-                        <div class="flex justify-end">
-                            <button type="submit"
-                                    class="rounded-lg bg-blue-700 text-white px-6 py-2.5  font-semibold hover:bg-blue-800 transition">
-                                Save Changes
-                            </button>
-                        </div>
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Email *</label>
+            <input name="email" type="email" value="{{ old('email', $u->email ?? '') }}"
+                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+            @error('email') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+        </div>
 
-                        @if (session('profile_ok'))
-                            <div class="text-sm text-emerald-700">{{ session('profile_ok') }}</div>
-                        @endif
-                    </form>
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Phone *</label>
+            <input name="phone" value="{{ old('phone', $u->phone ?? '') }}"
+                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+            @error('phone') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+        </div>
+
+        <div>
+            <label class="block text-sm font-semibold text-slate-700 mb-2">Telegram</label>
+            <input name="telegram" value="{{ old('telegram', $u->telegram ?? '') }}"
+                   class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">
+            @error('telegram') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+        </div>
+    </div>
+
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">Address *</label>
+        <textarea name="address" rows="3"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">{{ old('address', $u->address ?? '') }}</textarea>
+        @error('address') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+    </div>
+
+    <div>
+        <label class="block text-sm font-semibold text-slate-700 mb-2">Note</label>
+        <textarea name="note" rows="3"
+                  class="w-full rounded-lg border border-slate-200 px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-blue-500/40">{{ old('note', $u->note ?? '') }}</textarea>
+        @error('note') <div class="text-sm text-red-600 mt-1">{{ $message }}</div> @enderror
+    </div>
+
+    <div class="flex justify-end">
+        <button type="submit"
+                class="rounded-lg bg-blue-700 text-white px-6 py-2.5 font-semibold hover:bg-blue-800 transition">
+            Save Changes
+        </button>
+    </div>
+
+    @if (session('profile_ok'))
+        <div class="text-sm text-emerald-700">{{ session('profile_ok') }}</div>
+    @endif
+</form>
+
                 </div>
 
                 {{-- Change Password --}}

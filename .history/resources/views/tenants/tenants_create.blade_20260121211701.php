@@ -9,7 +9,7 @@
 
 @section('content')
     <main class="flex-1 overflow-y-auto bg-base">
-        <div class="flex items-center gap-4 mb-6 pt-2">
+        <div class="flex items-center gap-4 mb-6 p-10">
             <a href="{{ route('tanants.index') }}" class="text-text-mid hover:text-primary transition-colors"
                 aria-label="Back to tenants">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5"
@@ -23,62 +23,42 @@
 
 
             <div class="bg-light rounded-lg shadow-md border border-gray-200 p-8">
-                <form action="{{ route('tanants.store') }}" method="POST" class="space-y-6">
-                    @csrf
-
-                    @if ($errors->any())
-                        <div class="bg-red-50 border border-red-200 text-red-700 rounded-lg p-4">
-                            <ul class="list-disc pl-5 text-sm space-y-1">
-                                @foreach ($errors->all() as $err)
-                                    <li>{{ $err }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
+                {{-- UI only: no backend submit --}}
+                <form action="javascript:void(0)" method="POST" class="space-y-6" onsubmit="return false;" id="tenantForm">
 
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
+                        {{-- Full Name --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">
+                            <label for="full_name" class="block text-sm font-medium text-text-mid mb-2">
                                 Full Name <span class="text-danger-dark">*</span>
                             </label>
-                            <input type="text" name="full_name" value="{{ old('full_name') }}"
+                            <input type="text" id="full_name" name="full_name"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                placeholder="e.g., John Doe" required />
+                                placeholder="e.g., John Doe" value="" required />
                         </div>
 
+                        {{-- Phone Number --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">
+                            <label for="phone_number" class="block text-sm font-medium text-text-mid mb-2">
                                 Phone Number <span class="text-danger-dark">*</span>
                             </label>
-                            <input type="text" name="phone_number" value="{{ old('phone_number') }}"
+                            <input type="tel" id="phone_number" name="phone_number"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                placeholder="e.g., 012 345 678" required />
+                                placeholder="e.g., 012 345 678" value="012 345 678" required />
                         </div>
 
+                        {{-- Age --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">Age</label>
-                            <input type="number" name="age" value="{{ old('age') }}"
+                            <label for="age" class="block text-sm font-medium text-text-mid mb-2">Age</label>
+                            <input type="number" id="age" name="age"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                placeholder="e.g., 25" />
+                                placeholder="e.g., 25" value="25" />
                         </div>
 
+                        {{-- Room Selection (static fake rooms) --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">Email</label>
-                            <input type="email" name="email" value="{{ old('email') }}"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                placeholder="e.g., name@gmail.com" />
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">Password (Optional)</label>
-                            <input type="password" name="password"
-                                class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                placeholder="••••••" />
-                        </div>
-
-                        <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">
+                            <label for="room_id" class="block text-sm font-medium text-text-mid mb-2">
                                 Assign Room <span class="text-danger-dark">*</span>
                             </label>
                             <select id="room_id" name="room_id"
@@ -95,51 +75,55 @@
 
                         </div>
 
+                        {{-- Start Date --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">
+                            <label for="start_date" class="block text-sm font-medium text-text-mid mb-2">
                                 Start Date <span class="text-danger-dark">*</span>
                             </label>
-                            <input type="date" name="start_date" value="{{ old('start_date', now()->toDateString()) }}"
+                            <input type="date" id="start_date" name="start_date"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
-                                required />
+                                value="{{ now()->toDateString() }}" required />
                         </div>
 
+                        {{-- End Date --}}
                         <div>
-                            <label class="block text-sm font-medium text-text-mid mb-2">
+                            <label for="end_date" class="block text-sm font-medium text-text-mid mb-2">
                                 End Date (Optional)
                             </label>
-                            <input type="date" name="end_date" value="{{ old('end_date') }}"
+                            <input type="date" id="end_date" name="end_date"
                                 class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50" />
                         </div>
+
                     </div>
 
+                    {{-- Payment Term --}}
                     <div>
-                        <label class="block text-sm font-medium text-text-mid mb-2">
+                        <label for="payment_term" class="block text-sm font-medium text-text-mid mb-2">
                             Payment Term <span class="text-danger-dark">*</span>
                         </label>
-                        <select name="payment_term"
+                        <select id="payment_term" name="payment_term"
                             class="w-full border border-gray-300 rounded-lg px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-primary/50"
                             required>
-                            @foreach (['Monthly', 'Quarterly', 'Yearly'] as $term)
-                                <option value="{{ $term }}" @selected(old('payment_term', 'Monthly') == $term)>{{ $term }}
-                                </option>
-                            @endforeach
+                            <option value="Monthly" selected>Monthly</option>
+                            <option value="Quarterly">Quarterly</option>
+                            <option value="Yearly">Yearly</option>
                         </select>
                     </div>
 
+                    {{-- Actions --}}
                     <div class="flex justify-end gap-4 pt-4 border-t border-gray-200">
-                        <a href="{{ route('tanants.index') }}"
-                            class="px-6 py-2.5 border border-gray-300 text-text-mid font-semibold rounded-lg hover:bg-gray-50">
+                        <a href="#"
+                            class="px-6 py-2.5 border border-gray-300 text-text-mid font-semibold rounded-lg hover:bg-gray-50 transition-colors">
                             Cancel
                         </a>
 
-                        <button type="submit"
-                            class="px-6 py-2.5 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark">
+                        <button type="button" onclick="fakeSaveTenant()"
+                            class="px-6 py-2.5 bg-primary text-white font-semibold rounded-lg shadow-md hover:bg-primary-dark transition-colors">
                             Save Tenant
                         </button>
                     </div>
-                </form>
 
+                </form>
             </div>
 
             {{-- Toast (UI only) --}}

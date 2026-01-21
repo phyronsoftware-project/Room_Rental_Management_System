@@ -38,12 +38,6 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/dashboard', [Dashboard::class, 'index'])->name('dashboard.index');
 
-
-
-
-
-
-    
     Route::get('/tanants', [Tanants::class, 'index'])->name('tanants.index');
     Route::get('/tanants/create', [Tanants::class, 'createblade'])->name('tanants.createblade');
     Route::post('/tanants', [Tanants::class, 'store'])->name('tanants.store');
@@ -56,7 +50,7 @@ Route::middleware('auth')->group(function () {
 
 
 
-
+    
     Route::get('/rooms', [Rooms::class, 'index'])->name('rooms.index');
     Route::get('/rooms/create', [Rooms::class, 'createblade'])->name('rooms.createblade');
     Route::get('/rooms/available', [Rooms::class, 'roomsavailable'])->name('rooms.roomsavailable');

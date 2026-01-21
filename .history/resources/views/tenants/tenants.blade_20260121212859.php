@@ -267,7 +267,7 @@
                                             <div class="flex flex-col">
                                                 <span class="name">{{ $t->full_name }}</span>
                                                 <span class="muted">{{ $t->email ?? '—' }}</span>
-                                                {{-- <span class="mt-1 badge {{ $badgeClass }}">{{ $status }}</span> --}}
+                                                <span class="mt-1 badge {{ $badgeClass }}">{{ $status }}</span>
                                             </div>
                                         </div>
                                     </td>
